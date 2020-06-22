@@ -52,14 +52,27 @@ class DBManager:
         self.URI = URI
         self.engine = create_engine(URI, echo=True)
         
-    def addTables(self):
+    def addAllTables(self):
         print('TEST')
         base.metadata.create_all(self.engine)
         
+    def dropAllTables(self):
+        base.metadata.drop_all(self.engine)
         
-dbm = DBManager('mysql+pymysql://root:@localhost:3306/MyDatabase')
-dbm.addTables()
-print(dbm.URI)
+    def dropSingleTable(self, tablename):
+        table = base.metadata.tables.get(tablename)
+        base.metadata.drop_all(self.engine, [table])
+        
+     
+"""
+db_uri = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
+dbm = DBManager(db_uri)
+#dbm.dropAllTables()
+#dbm.addAllTables()
+dbm.dropAllTables()
+print(dbm.engine.table_names())
+"""
+      
 
 
 
