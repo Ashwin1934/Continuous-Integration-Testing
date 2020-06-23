@@ -15,6 +15,12 @@ from sqlalchemy.orm import sessionmaker
 
 base = declarative_base()
 
+import os
+dir_path = os.path.dirname(os.path.realpath(__file__))
+print(dir_path)
+
+cwd = os.getcwd()
+print(cwd)
 #session = sessionmaker(bind=engine)()
 
 
@@ -44,7 +50,7 @@ class Students(base):
     def __repr__(self):
         return repr(self.firstname + self.lastname)
  
-        
+"""      
 #create a manager class to administrate
 class DBManager:
     
@@ -64,7 +70,7 @@ class DBManager:
         base.metadata.drop_all(self.engine, [table])
         
      
-"""
+
 db_uri = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
 dbm = DBManager(db_uri)
 #dbm.dropAllTables()
