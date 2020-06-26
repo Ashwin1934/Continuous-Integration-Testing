@@ -44,11 +44,5 @@ class DBManager:
     def dropAllTables(self):
         CI.base.metadata.drop_all(self.engine)
         
-db_uri = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
-dbm = DBManager(db_uri)
-print(dbm.engine.table_names())
-dbm.testingprint()
-dbm.addAllTables()
-print(dbm.engine.table_names())
 
 

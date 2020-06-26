@@ -51,35 +51,6 @@ class Students(base):
     def __repr__(self):
         return repr(self.firstname + self.lastname)
  
-"""      
-#create a manager class to administrate
-class DBManager:
-    
-    def __init__(self, URI):
-        self.URI = URI
-        self.engine = create_engine(URI, echo=True)
-        
-    def addAllTables(self):
-        print('TEST')
-        base.metadata.create_all(self.engine)
-        
-    def dropAllTables(self):
-        base.metadata.drop_all(self.engine)
-        
-    def dropSingleTable(self, tablename):
-        table = base.metadata.tables.get(tablename)
-        base.metadata.drop_all(self.engine, [table])
-        
-     
-
-db_uri = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
-dbm = DBManager(db_uri)
-#dbm.dropAllTables()
-#dbm.addAllTables()
-dbm.dropAllTables()
-print(dbm.engine.table_names())
-"""
-      
 
 
 

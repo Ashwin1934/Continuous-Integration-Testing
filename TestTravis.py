@@ -6,14 +6,19 @@ Created on Fri Jun 19 12:30:45 2020
 """
 
 
+import unittest
+import Manager
+
 
 """class Tests(unittest.TestCase):
     def test_drop_tables(self):
         DBManager.dropAllTables(self)"""
         
 db_uri = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
-dbm = DBManager(db_uri)
+dbm = Manager.DBManager(db_uri)
 print(dbm.URI)
+print(dbm.engine.table_names())
+
         
         
         
