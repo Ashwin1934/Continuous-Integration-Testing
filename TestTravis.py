@@ -9,15 +9,35 @@ Created on Fri Jun 19 12:30:45 2020
 import unittest
 import Manager
 
+emptylist = ['alembic_version', 'stockprices']
+fulllist = ['alembic_version', 'courses', 'stockprices', 'students']
 
-"""class Tests(unittest.TestCase):
-    def test_drop_tables(self):
-        DBManager.dropAllTables(self)"""
+class Tests(unittest.TestCase):
+    
+    
+    def test_add_all_tables(self):
+        db_uri = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
+        dbm = Manager.DBManager(db_uri)
+        dbm.addAllTables()
+        result = dbm.engine.table_names()
+        self.assertEqual(result, fulllist)
         
-db_uri = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
-dbm = Manager.DBManager(db_uri)
-print(dbm.URI)
-print(dbm.engine.table_names())
+    def test_drop_all_tables(self):
+       db_uri = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
+       dbm = Manager.DBManager(db_uri)
+       dbm.dropAllTables()
+       result = dbm.engine.table_names()
+       self.assertEqual(result, emptylist)
+       
+    def test_add_S
+       
+        
+        
+        
+if __name__ == '__main__':
+    unittest.main()
+        
+    
 
         
         

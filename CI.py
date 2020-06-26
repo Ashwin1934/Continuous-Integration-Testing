@@ -14,14 +14,8 @@ from sqlalchemy.orm import sessionmaker
 #engine = create_engine(database_URI, echo=True)
 
 base = declarative_base()
-str = "TESTING"
 
-import os
-dir_path = os.path.dirname(os.path.realpath(__file__))
-print(dir_path)
 
-cwd = os.getcwd()
-print(cwd)
 #session = sessionmaker(bind=engine)()
 
 
