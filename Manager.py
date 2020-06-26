@@ -7,42 +7,48 @@ Created on Tue Jun 23 18:15:45 2020
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import ContinuousIntegrationPlayground as CP
-import Course
 
-course = Course(5, 'Ashwin')
-print(course)
+
+import CI
+from importlib import reload
+reload(CI)
+
+print(CI.str)
+
 
 
 #database_URI = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
 #engine = create_engine(database_URI, echo=True)
 
-"""
 class DBManager:
+    
+    
     
     def __init__(self, URI):
         self.URI = URI
         self.engine = create_engine(URI, echo=True)
-        Session = sessionmaker(bind=self.engine)
-        self.session = Session()
+        #Session = sessionmaker(bind=self.engine)
+        #self.session = Session()
+        
+    def testingprint(self):
+        print(CI.str)
         
     def addAllTables(self):
         print('TEST')
-        base.metadata.create_all(self.engine)
-        
-    def dropAllTables(self):
-        base.metadata.drop_all(self.engine)
+        CI.base.metadata.create_all(self.engine)
         
     def dropSingleTable(self, tablename):
-        table = base.metadata.tables.get(tablename)
-        base.metadata.drop_all(self.engine, [table])
+        table = CI.base.metadata.tables.get(tablename)
+        CI.base.metadata.drop_all(self.engine, [table])
+        
+    def dropAllTables(self):
+        CI.base.metadata.drop_all(self.engine)
         
 db_uri = 'mysql+pymysql://root:@localhost:3306/MyDatabase'
 dbm = DBManager(db_uri)
-#dbm.dropAllTables()
-#dbm.addAllTables()
-#dbm.dropAllTables()
 print(dbm.engine.table_names())
+dbm.testingprint()
 dbm.addAllTables()
 print(dbm.engine.table_names())
-"""
+
+
